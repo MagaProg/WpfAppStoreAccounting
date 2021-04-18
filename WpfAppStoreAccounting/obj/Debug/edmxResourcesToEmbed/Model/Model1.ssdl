@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище StoreAccountingModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CardType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cardtape" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Telephone" Type="int" Nullable="false" />
+    <Property Name="idCardType" Type="int" Nullable="false" />
+    <Property Name="CardNumber" Type="int" Nullable="false" />
+    <Property Name="idClientPerson" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ClientPerson">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Person" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LoadCategory">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PaymentForm">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Form" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idCategory" Type="int" Nullable="false" />
+    <Property Name="Model" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Manufacturer" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ManufacturerAddress" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Price" Type="bigint" Nullable="false" />
+    <Property Name="QuantityStore" Type="int" Nullable="false" />
+    <Property Name="QuantityWarehouse" Type="int" Nullable="false" />
+    <Property Name="NameProducts" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SerialNumber" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sales">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PurchaseQuantity" Type="int" Nullable="false" />
+    <Property Name="totalCost" Type="int" Nullable="false" />
+    <Property Name="DeliveryAddress" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="idProducts" Type="int" Nullable="false" />
+    <Property Name="idClient" Type="int" Nullable="false" />
+    <Property Name="idPaymentForm" Type="int" Nullable="false" />
+    <Property Name="idSupply" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Supply">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameSupply" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Client_CardType">
+    <End Role="CardType" Type="Self.CardType" Multiplicity="1" />
+    <End Role="Client" Type="Self.Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CardType">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="idCardType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Client_ClientPerson">
+    <End Role="ClientPerson" Type="Self.ClientPerson" Multiplicity="1" />
+    <End Role="Client" Type="Self.Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClientPerson">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="idClientPerson" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Products_LoadCategory">
+    <End Role="LoadCategory" Type="Self.LoadCategory" Multiplicity="1" />
+    <End Role="Products" Type="Self.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoadCategory">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="idCategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sales_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Sales">
+        <PropertyRef Name="idClient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sales_PaymentForm">
+    <End Role="PaymentForm" Type="Self.PaymentForm" Multiplicity="1" />
+    <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentForm">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Sales">
+        <PropertyRef Name="idPaymentForm" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sales_Products">
+    <End Role="Products" Type="Self.Products" Multiplicity="1" />
+    <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Sales">
+        <PropertyRef Name="idProducts" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sales_Supply">
+    <End Role="Supply" Type="Self.Supply" Multiplicity="1" />
+    <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supply">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Sales">
+        <PropertyRef Name="idSupply" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище StoreAccountingModelContainer">
+    <EntitySet Name="CardType" EntityType="Self.CardType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ClientPerson" EntityType="Self.ClientPerson" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoadCategory" EntityType="Self.LoadCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PaymentForm" EntityType="Self.PaymentForm" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sales" EntityType="Self.Sales" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Supply" EntityType="Self.Supply" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Client_CardType" Association="Self.FK_Client_CardType">
+      <End Role="CardType" EntitySet="CardType" />
+      <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Client_ClientPerson" Association="Self.FK_Client_ClientPerson">
+      <End Role="ClientPerson" EntitySet="ClientPerson" />
+      <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Products_LoadCategory" Association="Self.FK_Products_LoadCategory">
+      <End Role="LoadCategory" EntitySet="LoadCategory" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sales_Client" Association="Self.FK_Sales_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Sales" EntitySet="Sales" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sales_PaymentForm" Association="Self.FK_Sales_PaymentForm">
+      <End Role="PaymentForm" EntitySet="PaymentForm" />
+      <End Role="Sales" EntitySet="Sales" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sales_Products" Association="Self.FK_Sales_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="Sales" EntitySet="Sales" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sales_Supply" Association="Self.FK_Sales_Supply">
+      <End Role="Supply" EntitySet="Supply" />
+      <End Role="Sales" EntitySet="Sales" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

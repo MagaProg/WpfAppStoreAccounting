@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище StoreAccountingModelContainer" CdmEntityContainer="StoreAccountingEntities">
+    <EntitySetMapping Name="CardType">
+      <EntityTypeMapping TypeName="StoreAccountingModel.CardType">
+        <MappingFragment StoreEntitySet="CardType">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="cardtape" ColumnName="cardtape" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Client">
+      <EntityTypeMapping TypeName="StoreAccountingModel.Client">
+        <MappingFragment StoreEntitySet="Client">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="idCardType" ColumnName="idCardType" />
+          <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+          <ScalarProperty Name="idClientPerson" ColumnName="idClientPerson" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientPerson">
+      <EntityTypeMapping TypeName="StoreAccountingModel.ClientPerson">
+        <MappingFragment StoreEntitySet="ClientPerson">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Person" ColumnName="Person" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoadCategory">
+      <EntityTypeMapping TypeName="StoreAccountingModel.LoadCategory">
+        <MappingFragment StoreEntitySet="LoadCategory">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentForm">
+      <EntityTypeMapping TypeName="StoreAccountingModel.PaymentForm">
+        <MappingFragment StoreEntitySet="PaymentForm">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Form" ColumnName="Form" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sales">
+      <EntityTypeMapping TypeName="StoreAccountingModel.Sales">
+        <MappingFragment StoreEntitySet="Sales">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="PurchaseQuantity" ColumnName="PurchaseQuantity" />
+          <ScalarProperty Name="totalCost" ColumnName="totalCost" />
+          <ScalarProperty Name="DeliveryAddress" ColumnName="DeliveryAddress" />
+          <ScalarProperty Name="idProducts" ColumnName="idProducts" />
+          <ScalarProperty Name="idClient" ColumnName="idClient" />
+          <ScalarProperty Name="idPaymentForm" ColumnName="idPaymentForm" />
+          <ScalarProperty Name="idSupply" ColumnName="idSupply" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Supply">
+      <EntityTypeMapping TypeName="StoreAccountingModel.Supply">
+        <MappingFragment StoreEntitySet="Supply">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="NameSupply" ColumnName="NameSupply" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="StoreAccountingModel.Products">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="NameProducts" ColumnName="NameProducts" />
+          <ScalarProperty Name="QuantityWarehouse" ColumnName="QuantityWarehouse" />
+          <ScalarProperty Name="QuantityStore" ColumnName="QuantityStore" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="ManufacturerAddress" ColumnName="ManufacturerAddress" />
+          <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="idCategory" ColumnName="idCategory" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

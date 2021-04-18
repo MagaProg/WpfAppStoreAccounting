@@ -1,0 +1,67 @@
+﻿<Page x:Class="WpfAppStoreAccounting.PageStore.PageAddProduct"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfAppStoreAccounting.PageStore"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageAddProduct">
+
+    <Grid>
+        <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="30" Text="Добавить товар"/>
+        <StackPanel Margin="3,30,3,3" VerticalAlignment="Top" HorizontalAlignment="Center"  Orientation="Vertical">
+            
+            <StackPanel Orientation="Horizontal">
+            
+                <StackPanel Orientation="Vertical">
+                <TextBlock Style="{StaticResource tex}"  Text="Категория товара"/>
+                    <ComboBox DisplayMemberPath="CategoryName" x:Name="CMDCategry" />
+                </StackPanel>
+                 <StackPanel Orientation="Vertical">
+                    <TextBlock  Style="{StaticResource tex}" Text="Модель"/>
+                 <TextBox x:Name="ModelProducts"/>
+                 </StackPanel>
+                 <StackPanel Orientation="Vertical">
+                    <TextBlock  Style="{StaticResource tex}" Text="Производитель"/>
+                  <TextBox x:Name="ManuProducts"/>
+                  </StackPanel>
+                
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+
+                <StackPanel Orientation="Vertical">
+                    <TextBlock  Style="{StaticResource tex}" Text="Адрес производителя"/>
+                    <TextBox  x:Name="ManuAddresProducts" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock  Style="{StaticResource tex}" Text="Цена"/>
+                    <TextBox  PreviewTextInput="PriceProducts_PreviewTextInput" x:Name="PriceProducts" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock  Style="{StaticResource tex}" Text="Количество в магазине"/>
+                    <TextBox  PreviewTextInput="QuStoreProducts_PreviewTextInput" x:Name="QuStoreProducts"/>
+                </StackPanel>
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+
+                <StackPanel Orientation="Vertical">
+                    <TextBlock  Style="{StaticResource tex}" Text="Количество на складе"/>
+                    <TextBox PreviewTextInput="QuWarehouseProducts_PreviewTextInput" x:Name="QuWarehouseProducts" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock  Style="{StaticResource tex}" Text="Серийный номер"/>
+                    <TextBox x:Name="SerialNumbeProducts"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock  Style="{StaticResource tex}" Text="Название продукта"/>
+                    <TextBox x:Name="nameProducts"/>
+                </StackPanel>
+
+            </StackPanel>
+
+            <Button  x:Name="AddProducts" Click="AddProducts_Click" Content="Добавить" />
+        </StackPanel>
+    </Grid>
+</Page>

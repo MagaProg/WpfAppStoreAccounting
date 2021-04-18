@@ -1,0 +1,45 @@
+﻿<Page x:Class="WpfAppStoreAccounting.PageStore.PageSelectProduct"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfAppStoreAccounting.PageStore"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="1200"
+      Title="PageSelectProduct" Loaded="Page_Loaded">
+
+    <Grid>
+        <StackPanel>
+            
+            <StackPanel Margin="0,0,0,0" VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock  Style="{StaticResource tex}" Text="Категория товаров:" FontSize="18" TextAlignment="Center" VerticalAlignment="Center"/>
+                <Button Style="{StaticResource Categor}" x:Name="cat1" Click="cat1_Click" Content="Бытовая техника" MouseEnter="cat1_MouseEnter" MouseLeave="cat1_MouseLeave"/>
+                <Button  Style="{StaticResource Categor}"  x:Name="cat2" Click="cat2_Click" Content="Компьютеры" MouseEnter="cat2_MouseEnter" MouseLeave="cat2_MouseLeave" />
+                <Button  Style="{StaticResource Categor}"  x:Name="cat3" Click="cat3_Click" Content="Телефоны" MouseEnter="cat3_MouseEnter" MouseLeave="cat3_MouseLeave" />
+                <Button  Style="{StaticResource Categor}"  x:Name="cat4" Click="cat4_Click" Content="Электроника и фото" MouseEnter="cat4_MouseEnter" MouseLeave="cat4_MouseLeave" />
+            </StackPanel>
+                <StackPanel>
+                <DataGrid   AutoGenerateColumns="False" x:Name="Grid1">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Width="*" Binding="{Binding NameProducts }" Header="Название"/>
+                        <DataGridTextColumn  Width="*" Binding="{Binding Model }" Header="Модель"/>
+                        <DataGridTextColumn  Width="*" Binding="{Binding Manufacturer }" Header="Производитель"/>
+                        <DataGridTextColumn  Width="*" Binding="{Binding ManufacturerAddress }" Header="Адрес производителя"/>
+                        <DataGridTextColumn  Width="*" Binding="{Binding QuantityStore }"  Header="Количество в магазине"/>
+                        <DataGridTextColumn  Width="*" Binding="{Binding QuantityWarehouse }"  Header="Количество на складе"/>
+                        <DataGridTextColumn  Width="*" Binding="{Binding SerialNumber }"  Header="Серийный номер"/>
+                        <DataGridTextColumn  Width="*" Binding="{Binding Price }"  Header="Цена"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+           
+               </StackPanel>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <Button x:Name="AddProduct" Click="AddProduct_Click" Content="Добавить продукт" Width="192" />
+                <Button x:Name="DelateProd" Click="DelateProd_Click"  Width="192" Content="Удалить продукт" />
+                <Button x:Name="UpProd" Click="UpProd_Click" Width="192" Content="Редактировать продукт"/>
+                <Button x:Name="AddSales" Click="AddSales_Click" Width="192" Content="Оформить заказ"/>
+            </StackPanel>
+            
+            </StackPanel>
+    </Grid>
+</Page>
